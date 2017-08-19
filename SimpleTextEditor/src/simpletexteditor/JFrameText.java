@@ -27,36 +27,32 @@ public class JFrameText extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        textArea1 = new java.awt.TextArea();
-        jMenuBar1 = new javax.swing.JMenuBar();
+        textEditArea = new java.awt.TextArea();
+        menuBar = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
-        jCheckBoxMenuItem3 = new javax.swing.JCheckBoxMenuItem();
-        jCheckBoxMenuItem4 = new javax.swing.JCheckBoxMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        jNew = new javax.swing.JCheckBoxMenuItem();
+        jClose = new javax.swing.JCheckBoxMenuItem();
+        jEdit = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setName("textFrame"); // NOI18N
 
         jMenu1.setText("File");
 
-        jCheckBoxMenuItem1.setSelected(true);
-        jCheckBoxMenuItem1.setText("New");
-        jMenu1.add(jCheckBoxMenuItem1);
+        jNew.setSelected(true);
+        jNew.setText("New");
+        jMenu1.add(jNew);
 
-        jCheckBoxMenuItem3.setSelected(true);
-        jCheckBoxMenuItem3.setText("Close");
-        jMenu1.add(jCheckBoxMenuItem3);
+        jClose.setSelected(true);
+        jClose.setText("Close");
+        jMenu1.add(jClose);
 
-        jCheckBoxMenuItem4.setSelected(true);
-        jCheckBoxMenuItem4.setText("Close");
-        jMenu1.add(jCheckBoxMenuItem4);
+        menuBar.add(jMenu1);
 
-        jMenuBar1.add(jMenu1);
+        jEdit.setText("Edit");
+        menuBar.add(jEdit);
 
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
-
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(menuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -64,14 +60,14 @@ public class JFrameText extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(textArea1, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                .addComponent(textEditArea, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(textArea1, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
+                .addComponent(textEditArea, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -114,12 +110,11 @@ public class JFrameText extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
-    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem3;
-    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem4;
+    private javax.swing.JCheckBoxMenuItem jClose;
+    private javax.swing.JMenu jEdit;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
-    private java.awt.TextArea textArea1;
+    private javax.swing.JCheckBoxMenuItem jNew;
+    private javax.swing.JMenuBar menuBar;
+    private java.awt.TextArea textEditArea;
     // End of variables declaration//GEN-END:variables
 }
