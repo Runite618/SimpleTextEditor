@@ -5,6 +5,12 @@
  */
 package simpletexteditor;
 
+import java.awt.TextArea;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import javax.swing.JFileChooser;
+
 /**
  *
  * @author matth
@@ -27,30 +33,53 @@ public class JFrameText extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        textEditArea = new java.awt.TextArea();
+        fileChooser = new javax.swing.JFileChooser();
+        scrollPane = new javax.swing.JScrollPane();
+        textEditArea = new javax.swing.JTextArea();
         menuBar = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        change = new javax.swing.JMenu();
         jNew = new javax.swing.JCheckBoxMenuItem();
+        jOpen = new javax.swing.JCheckBoxMenuItem();
         jClose = new javax.swing.JCheckBoxMenuItem();
-        jEdit = new javax.swing.JMenu();
+        edit = new javax.swing.JMenu();
+
+        fileChooser.setDialogTitle("This is my open dialog");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setName("textFrame"); // NOI18N
 
-        jMenu1.setText("File");
+        textEditArea.setColumns(20);
+        textEditArea.setRows(5);
+        scrollPane.setViewportView(textEditArea);
+
+        change.setText("File");
 
         jNew.setSelected(true);
         jNew.setText("New");
-        jMenu1.add(jNew);
+        change.add(jNew);
+
+        jOpen.setSelected(true);
+        jOpen.setText("Open");
+        jOpen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jOpenActionPerformed(evt);
+            }
+        });
+        change.add(jOpen);
 
         jClose.setSelected(true);
         jClose.setText("Close");
-        jMenu1.add(jClose);
+        jClose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCloseActionPerformed(evt);
+            }
+        });
+        change.add(jClose);
 
-        menuBar.add(jMenu1);
+        menuBar.add(change);
 
-        jEdit.setText("Edit");
-        menuBar.add(jEdit);
+        edit.setText("Edit");
+        menuBar.add(edit);
 
         setJMenuBar(menuBar);
 
@@ -60,19 +89,41 @@ public class JFrameText extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(textEditArea, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                .addComponent(scrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(textEditArea, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    
+    private void jOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jOpenActionPerformed
+        // TODO add your handling code here:
+        int returnVal = fileChooser.showOpenDialog(this);
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            File file = fileChooser.getSelectedFile();
+            try {
+                // What to do with the file, e.g. display it in a TextArea
+                textEditArea.read(new FileReader(file.getAbsolutePath()), "A file");
+            } catch(IOException ex) {
+                System.out.println("Problem accessing file" + file.getAbsolutePath());
+            }
+        } else {
+            System.out.println("File access cancelled by user.");
+        }
+    }//GEN-LAST:event_jOpenActionPerformed
+
+    private void jCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCloseActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jCloseActionPerformed
 
     /**
      * @param args the command line arguments
@@ -110,11 +161,14 @@ public class JFrameText extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu change;
+    private javax.swing.JMenu edit;
+    private javax.swing.JFileChooser fileChooser;
     private javax.swing.JCheckBoxMenuItem jClose;
-    private javax.swing.JMenu jEdit;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JCheckBoxMenuItem jNew;
+    private javax.swing.JCheckBoxMenuItem jOpen;
     private javax.swing.JMenuBar menuBar;
-    private java.awt.TextArea textEditArea;
+    private javax.swing.JScrollPane scrollPane;
+    private javax.swing.JTextArea textEditArea;
     // End of variables declaration//GEN-END:variables
 }
